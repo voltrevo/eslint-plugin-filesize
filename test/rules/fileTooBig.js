@@ -62,4 +62,15 @@ describe('eslint-plugin-filesize', function() {
       [['mock-node', 'big.min.js.gz is 2021 bytes (limit: 1536)']]
     );
   });
+
+  it('reports bad config', function() {
+    var context = MockContext('empty.js', '');
+    context.options = ['foobar'];
+    fileTooBig(context).Program('mock-node');
+
+    assert.deepEqual(
+      context.getReports(),
+      [['mock-node', 'invalid config (context.options[0]: "foobar")']]
+    );
+  });
 });
