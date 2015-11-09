@@ -6,6 +6,7 @@ var path = require('path');
 
 // community modules
 var Promise = require('bluebird');
+var range = require('range').range;
 
 // local modules
 var fileTooBig = require('../lib/rules/fileTooBig.js');
@@ -58,6 +59,22 @@ describe('eslint-plugin-filesize', function() {
     return context('small.js', 'awehaioidfboaidhfboiashdobhadb').then(function(context) {
       fileTooBig(context).Program('mock-node');
       assert.deepEqual(context.getReports(), []);
+    });
+  });
+
+  it('reports when file is too big', function() {
+    return context(
+      'big.js',
+      range(500000).map(function(i) {
+        return String.fromCharCode(97 + (i * i * i) % 26);
+      }).join('')
+    ).then(function(context) {
+      fileTooBig(context).Program('mock-node');
+
+      assert.deepEqual(
+        context.getReports(),
+        [['mock-node', 'big.min.js.gz is 2021 bytes (limit: 1536)']]
+      );
     });
   });
 });
