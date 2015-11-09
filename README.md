@@ -5,17 +5,17 @@
 
 1. Install `eslint-plugin-filesize` as a dev-dependency:
 
-```sh
-$ npm install --save-dev eslint-plugin-filesize
-```
+  ```sh
+  $ npm install --save-dev eslint-plugin-filesize
+  ```
 
 2. Enable the plugin by adding it to your .eslintrc:
 
-```json
-plugins: [
-  "filesize"
-]
-```
+  ```json
+  plugins: [
+    "filesize"
+  ]
+  ```
 
 ## Configuration
 
