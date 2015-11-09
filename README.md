@@ -1,21 +1,33 @@
 # eslint-plugin-filesize [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > An eslint plugin that limits the minified + gzipped size of a file.
 
-
-## Install
-
-```sh
-$ npm install --save eslint-plugin-filesize
-```
-
-
 ## Usage
 
-```js
-var eslintPluginFilesize = require('eslint-plugin-filesize');
+1. Install `eslint-plugin-filesize` as a dev-dependency:
 
-eslintPluginFilesize('Rainbow');
+```sh
+$ npm install --save-dev eslint-plugin-filesize
 ```
+
+2. Enable the plugin by adding it to your .eslintrc:
+
+```json
+plugins: [
+  "filesize"
+]
+```
+
+## Configuration
+
+By default the limit is to report an error when 1,536 bytes is exceeded. You can adjust this by setting the `filesize/filesize` rule in your .eslintrc:
+
+```json
+rules: {
+  "filesize/filesize": [2, {"limit": 800}]
+}
+```
+
+As standard in eslint, set that first element to 1 to make this a warning instead of an error.
 
 ## License
 
