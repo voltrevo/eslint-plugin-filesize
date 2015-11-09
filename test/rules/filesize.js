@@ -8,7 +8,7 @@ var path = require('path');
 var range = require('range').range;
 
 // local modules
-var fileTooBig = require('../../lib/rules/fileTooBig.js');
+var filesize = require('../../lib/rules/filesize.js');
 
 var MockContext = function(fname, content) {
   var reports = [];
@@ -37,13 +37,13 @@ var MockContext = function(fname, content) {
 describe('eslint-plugin-filesize', function() {
   it('doesn\'t report anything for an empty file', function() {
     var context = MockContext('empty.js', '');
-    fileTooBig(context).Program('mock-node');
+    filesize(context).Program('mock-node');
     assert.deepEqual(context.getReports(), []);
   });
 
   it('doesn\'t report anything for a small file', function() {
     var context = MockContext('small.js', 'awehaioidfboaidhfboiashdobhadb');
-    fileTooBig(context).Program('mock-node');
+    filesize(context).Program('mock-node');
     assert.deepEqual(context.getReports(), []);
   });
 
@@ -55,7 +55,7 @@ describe('eslint-plugin-filesize', function() {
       }).join('')
     );
 
-    fileTooBig(context).Program('mock-node');
+    filesize(context).Program('mock-node');
 
     assert.deepEqual(
       context.getReports(),
@@ -66,7 +66,7 @@ describe('eslint-plugin-filesize', function() {
   it('reports bad config', function() {
     var context = MockContext('empty.js', '');
     context.options = ['foobar'];
-    fileTooBig(context).Program('mock-node');
+    filesize(context).Program('mock-node');
 
     assert.deepEqual(
       context.getReports(),
