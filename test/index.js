@@ -53,4 +53,11 @@ describe('eslint-plugin-filesize', function() {
       assert.deepEqual(context.getReports(), []);
     });
   });
+
+  it('doesn\'t report anything for a small file', function() {
+    return context('small.js', 'awehaioidfboaidhfboiashdobhadb').then(function(context) {
+      fileTooBig(context).Program('mock-node');
+      assert.deepEqual(context.getReports(), []);
+    });
+  });
 });
