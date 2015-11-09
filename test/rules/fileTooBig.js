@@ -24,7 +24,7 @@ var MockContext = function(fname, content) {
         }
       };
     },
-    options: [2, {limit: 1536}],
+    options: [{limit: 1536}],
     report: function() {
       reports.push(Array.prototype.slice.apply(arguments));
     },
