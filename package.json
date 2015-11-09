@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-filesize",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An eslint plugin that limits the minified + gzipped size of a file.",
   "homepage": "",
   "author": {
@@ -36,8 +36,7 @@
     "gulp-mocha": "^2.0.0",
     "gulp-plumber": "^1.0.0",
     "range": "0.0.3",
-    "tmp": "0.0.28",
-    "uglify-js": "^2.5.0"
+    "tmp": "0.0.28"
   },
   "scripts": {
     "prepublish": "gulp prepublish",
@@ -45,6 +44,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "fs-plus": "^2.8.1"
+    "uglify-js": "^2.5.0"
   }
 }
